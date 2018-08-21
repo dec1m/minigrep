@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="textProvider"
+		class="ru.trach.grep.providers.FileTextProvider" destroy-method="closeConnections" >
+		
+	</bean>
+	
+	<bean id="textFilter" class="ru.trach.grep.filtres.TextFilterImpl">
+		<constructor-arg index="0" ref="textProvider"></constructor-arg>
+	</bean>
+	
+	<bean id="textViewer" class="ru.trach.grep.view.PrinterTextViewer"></bean>
+</beans>
